@@ -6,23 +6,19 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author       = { "Christoffer Lejdborg" => "hello@9muses.se", "Tommaso Madonia" => "", "@Shirk" => "", "Endika Gutiérrez" => "me@endika.net" }
 
-  # https://github.com/Lejdborg/NMSSH.git
-  # uses endSly repository for testing.
-
   s.source       = { :git => "https://github.com/Lejdborg/NMSSH.git", :tag => s.version.to_s }
   s.source_files = 'NMSSH', 'NMSSH/**/*.{h,m}' 
   s.requires_arc = true
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
 
-  s.libraries      = 'z', 'ssl', 'ssh2', 'crypto'
+  s.dependency 'libssh2'
 
   s.ios.source_files = 'NMSSH-iOS', 'NMSSH-iOS/**/*.h'
   s.ios.preserve_paths = 'NMSSH-iOS'
 
   s.xcconfig = {
     "OTHER_LDFLAGS" => "-ObjC",
-    "LIBRARY_SEARCH_PATHS" => '"$(PODS_ROOT)/NMSSH/NMSSH-iOS/Libraries/lib"'
   }
 
 end
